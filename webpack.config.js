@@ -1,88 +1,68 @@
-/* eslint-env node */
 const HtmlPlugin = require('html-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
-const path = require('path');
 const CleanPlugin = require('clean-webpack-plugin');
 
-module.exports = env => {
-  const isProd = env === 'production';
-
-  const devPlugins = isProd ? [] : [
+module.exports = {
+  entry: ['@babel/polyfill', './src/index.js'],
+  output: {
+    filename: 'bundle.[hash].js',
+    publicPath: '/'
+  },
+  devServer: {
+    port: 7890,
+    historyApiFallback: true
+  },
+  plugins: [
     new HtmlPlugin({ template: './src/index.html' }),
-    new Dotenv({ path: path.resolve(__dirname, './.env') }),
-  ];
-
-  return {
-    entry: './src/index.js',
-    output: {
-      filename: 'bundle.[hash].js',
-      publicPath: '/'
-    },
-    devtool: isProd ? 'source-map' : 'inline-source-map',
-    devServer: {
-      port: 8080,
-      historyApiFallback: true,
-      proxy: {
-        '/graphql': {
-          target: 'http://localhost:7890',
-          secure: false
+    new CleanPlugin('./dist')
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+            plugins: ['@babel/plugin-proposal-class-properties'],
+            cacheDirectory: true
+          }
         }
-      }
-    },
-    plugins: [
-      new CleanPlugin('./dist/bundle.*.js'),
-      ...devPlugins
-    ],
-    module: {
-      rules: [
-        {
-          test: /\.jsx?$/,
-          exclude: /node_modules/,
-          use: {
-            loader: 'babel-loader',
+      },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'style-loader',
+            options: { sourceMap: true }
+          },
+          {
+            loader: 'css-loader',
             options: {
-              cacheDirectory: true
+              sourceMap: true,
+              modules: true,
+              importLoaders: 1
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true,
+              plugins: [
+                require('autoprefixer')(),
+                require('postcss-nested')()
+              ]
             }
           }
+        ]
+      },
+      {
+        test: /\.(jpeg|jpg|png|svg)$/,
+        use: {
+          loader: 'url-loader',
+          options: { limit: 1000 },
         },
-        {
-          test: /\.css$/,
-          use: [
-            {
-              loader: 'style-loader',
-              options: { sourceMap: true }
-            },
-            {
-              loader: 'css-loader',
-              options: {
-                sourceMap: true,
-                modules: true,
-                importLoaders: 1
-              }
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                sourceMap: true,
-                plugins: [
-                  require('autoprefixer')(),
-                  require('postcss-nested')(),
-                  require('postcss-simple-vars')()
-                ]
-              }
-            }
-          ]
-        },
-        {
-          test: /\.(jpg|png|svg)$/,
-          use: {
-            loader: 'url-loader',
-            options: { limit: 1000 },
-          },
-        }
-      ]
-    }
-
-  };
-
+      }
+    ]
+  }
 };
