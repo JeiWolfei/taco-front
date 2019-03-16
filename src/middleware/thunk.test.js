@@ -1,6 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
 import { thunk } from './thunk';
-import { isTSAnyKeyword, exportAllDeclaration } from '@babel/types';
 
 describe('thunk middleware', () => {
   let reducer = null;
