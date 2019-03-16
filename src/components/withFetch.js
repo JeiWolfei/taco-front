@@ -5,7 +5,7 @@ export const withFetch = Component => {
   class WithFetch extends PureComponent {
     static propTypes = {
       fetch: PropTypes.func.isRequired,
-      isLoading: PropTypes.bool.isRequired
+      isLoading: PropTypes.bool
     };
 
     componentDidMount() {

@@ -1,7 +1,13 @@
 import React from 'react';
-import AllFacts from '../../containers/facts/AllFacts';
+import TacoStat from '../../containers/stat/TacoStat';
+// TacoStat equals SimpsonsQuote
 
 
 export default function App() {
-  return <AllFacts />;
+  return (
+    <div>
+      <h1>Taco Stats</h1>
+      <TacoStat />
+    </div> 
+  );
 }
