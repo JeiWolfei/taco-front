@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchStat } from '../../actions/tacos';
-import { getTacoImage, getTacoName, getStat, isLoading } from '../../selectors/tacos';
+import {  getTacoName, getTacoImage, getStat, isLoading } from '../../selectors/tacos';
 import Stat from '../../components/stat/Stat';
 import { withFetch } from '../../components/stat/withFetch';
 

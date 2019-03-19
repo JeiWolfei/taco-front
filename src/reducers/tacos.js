@@ -1,28 +1,10 @@
-import { FETCH_STAT, FETCH_STAT_LOADING } from '../actions/tacos';
+import { getStat } from '../services/tacoApi';
 
-const initialState = {
-  stat: '',
-  tacoName: '',
-  tacoImage: '',
-  loading: false
-};
+export const FETCH_STAT = 'FETCH_STAT';
+export const FETCH_STAT_LOADING = 'FETCH_STAT_LOADING';
 
-export default function reducer(state = initialState, { type, payload }) {
-  switch(type) {
-    case FETCH_STAT:
-      return {
-        ...state,
-        stat: payload[0].stat,
-        tacoName: payload[0].taco,
-        tacoImage: payload[0].image,
-        loading: false
-      };
-    case FETCH_STAT_LOADING:
-      return {
-        ...state,
-        loading: true
-      };
-    default:
-      return state;
-  }
-}
+export const fetchQuote = () => ({
+  type: FETCH_STAT,
+  loadStart: FETCH_STAT_LOADING,
+  payload: getStat()
+});

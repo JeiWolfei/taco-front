@@ -13,12 +13,9 @@ export const withFetch = Component => {
     }
 
     render() {
-      const { isLoading } = this.props;
       return (
         <>
-          {isLoading ?
-            <h1>Please Hold, We Are Loading!</h1 >
-            : <Component {...this.props} />}
+          <Component {...this.props} />
         </>
       );
     }
