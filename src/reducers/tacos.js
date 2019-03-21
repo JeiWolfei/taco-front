@@ -1,10 +1,10 @@
-import { getStat } from '../services/tacoApi';
+import { getLog } from '../services/tacoApi';
 
-export const FETCH_STAT = 'FETCH_STAT';
-export const FETCH_STAT_LOADING = 'FETCH_STAT_LOADING';
+export const FETCH_LOG = 'FETCH_LOG';
+export const FETCH_LOG_LOADING = 'FETCH_LOG_LOADING';
 
 export const fetchQuote = () => ({
-  type: FETCH_STAT,
-  loadStart: FETCH_STAT_LOADING,
-  payload: getStat()
+  type: FETCH_LOG,
+  loadStart: FETCH_LOG_LOADING,
+  payload: getLog()
 });

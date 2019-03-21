@@ -1,17 +1,18 @@
 import React from './react';
 import renderer from 'react-test-renderer';
-import Stat from './Stat';
+import Log from './Log';
 
-describe('Stat', () => {
+describe('Log', () => {
   it ('matches a snapshot', () => {
-    const stat = 'stat';
+    const log = 'log';
+
     const tacoName = 'name';
     const tacoImage = 'image';
     const fetch = jest.fn();
     const loading = false;
 
     const tree = renderer.create(
-      <Stat stat={stat} 
+      <Log log={log} 
         tacoName={tacoName} 
         tacoImage={tacoImage} 
         fetch={fetch} 

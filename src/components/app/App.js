@@ -1,5 +1,5 @@
 import React from 'react';
-import TacoStat from '../../containers/stat/TacoStat';
+import TacoLog from '../../containers/log/TacoLog';
 // TacoStat equals SimpsonsQuote
 
 

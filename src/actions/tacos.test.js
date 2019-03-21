@@ -1,16 +1,16 @@
-import { FETCH_STAT, fetchStat } from './tacos';
-import { getStat } from '../services/tacoApi';
+import { FETCH_LOG, fetchLog } from './tacos';
+import { getLog } from '../services/tacoApi';
 
 jest.mock('../services/tacoApi');
 
 describe('actions test', () => {
-  it('fetches a stat', () => {
-    const action = fetchStat();
+  it('fetches a log', () => {
+    const action = fetchLog();
 
     expect(action).toEqual({
-      type: FETCH_STAT,
-      loadStart: 'FETCH_STAT_LOADING',
-      payload: getStat()
+      type: FETCH_LOG,
+      loadStart: 'FETCH_LOG_LOADING',
+      payload: getLog()
     });
   });
 });
