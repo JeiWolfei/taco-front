@@ -95,8 +95,7 @@ export const getLog = () => {
       'tags': 'latin',
       'price': 3,
       'image': 'https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwiGhOaBr5HhAhWMvJ4KHZXgDKAQjRx6BAgBEAU&url=https%3A%2F%2Fhellogiggles.com%2Flifestyle%2Ffood-drink%2Fpizza-taco-town-saturday-night-live-sketch%2F&psig=AOvVaw1mHXTQj8iq--ikEO-J88MZ&ust=1553193547551242'
-    },
-    
+    }, 
   ];
     
   return Promise.resolve({

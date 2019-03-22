@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import Load  from './Load';
 
-describe('Stat', () => {
+describe('Log', () => {
   it('matches a snapshot', () => {
     const fetch = jest.fn();
     const tree = renderer.create(

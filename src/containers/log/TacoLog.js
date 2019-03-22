@@ -5,7 +5,7 @@ import Log from '../../components/log/Log';
 import { withFetch } from '../../components/log/withFetch';
 
 const mapStateToProps = state => ({
-  stat: getLog(state),
+  log: getLog(state),
   tacoName: getTacoName(state),
   tacoImage: getTacoImage(state),
   loading: isLoading(state)
